@@ -33,9 +33,8 @@ var borderR = ["50%", "0%"];
 setInterval(function () {
     document.getElementById("child").onclick = function () {
         var end = new Date().getTime();
-        var time = end - start;
-        time = time / 1000;
-        document.getElementById("time").innerHTML = "Your time: " + time + "s";
+        var time = (end - start)/1000;
+        document.getElementById("time").innerHTML = time + "s";
         time = 0;
         document.getElementById("child").remove();
         document.getElementById("parent").innerHTML = "<div id='child'></div>";
