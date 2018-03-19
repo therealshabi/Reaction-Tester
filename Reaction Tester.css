@@ -1,0 +1,15 @@
+#time {
+    font-weight: bold;
+}
+
+#parent {
+    width: 100%;
+}
+
+#child {
+    margin-top: 50px;
+}
+
+#child:hover {
+    box-shadow: 10px 10px 10px #888888;
+}
