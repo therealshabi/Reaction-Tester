@@ -12,10 +12,6 @@ function getRandomColor() {
     return color;
 }
 
-function getRandomHeight() {
-    return (Math.random() * 400) + 60;
-}
-
 function getRandomWidth() {
     return (Math.random() * 400) + 60;
 }
@@ -28,22 +24,26 @@ var start = new Date().getTime();
 
 var borderR = ["50%", "0%"];
 
+function getNewShape() {
+    document.getElementById("parent").innerHTML = "<div id='child'></div>";
+    var color = getRandomColor();
+    document.getElementById("child").style.backgroundColor = color;
+    var width = getRandomWidth();
+    document.getElementById("child").style.height = width + "px";
+    document.getElementById("child").style.width = width + "px";
+    document.getElementById("child").style.borderRadius = borderR[Math.floor(Math.random() * 2)];
+    document.getElementById("child").style.marginLeft = getRandomMargin() + "px";
+    start = new Date().getTime();
+}
 
 //Set a loop which starts evert 1 second
 setInterval(function () {
     document.getElementById("child").onclick = function () {
         var end = new Date().getTime();
-        var time = (end - start)/1000;
+        var time = (end - start) / 1000;
         document.getElementById("time").innerHTML = time + "s";
         time = 0;
         document.getElementById("child").remove();
-        document.getElementById("parent").innerHTML = "<div id='child'></div>";
-        var color = getRandomColor();
-        document.getElementById("child").style.backgroundColor = color;
-        document.getElementById("child").style.height = getRandomHeight() + "px";
-        document.getElementById("child").style.width = getRandomWidth() + "px";
-        document.getElementById("child").style.borderRadius = borderR[Math.floor(Math.random() * 2)];
-        document.getElementById("child").style.marginLeft = getRandomMargin() + "px";
-        start = new Date().getTime();
+        getNewShape();
     }
-}, 100);
+}, Math.random() * 2000);
